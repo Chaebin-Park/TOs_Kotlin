@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="deu.cse.tos">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <queries>
+        <package android:name="com.kakao.talk" />
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TOs">
+        <activity android:name=".activity.IntroActivity" />
+        <activity
+            android:name=".activity.ExitPopupActivity"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".activity.VideoActivity" />
+        <activity android:name=".activity.TimerActivity" />
+        <activity android:name=".activity.SelfCheckActivity" />
+        <activity android:name=".activity.NotLoginActivity" />
+        <activity android:name=".activity.ModeActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.InformationActivity" />
+        <activity android:name=".activity.CheckResultActivity" />
+        <activity android:name=".activity.BrushListActivity" />
+        <activity android:name=".activity.AddBrushListActivty" />
+        <activity android:name=".activity.BrushActivity" />
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

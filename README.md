@@ -1,2 +1,2 @@
-# TOS_Kotlin
-#TOS version 2
+# TOs_Kotlin
+- Java to Kotlin

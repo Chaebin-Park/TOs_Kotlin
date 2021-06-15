@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/themecolor"
+    tools:context=".activity.fragment.CalendarFragment">
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarView"
+        app:mcv_arrowColor="@color/calendar_arrow"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="44dp"
+        android:layout_weight="0.45"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mcv_dateTextAppearance="@style/CustomTextAppearance"
+        app:mcv_weekDayTextAppearance="@style/CustomWeekTextAppearance"
+        app:mcv_headerTextAppearance="@style/CustomHeaderTextAppearance"
+        app:mcv_selectionColor="#ffffff"
+        app:mcv_tileWidth="50dp"
+        app:mcv_showOtherDates="all" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.55"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:background="@drawable/group_256"
+        tools:layout_editor_absoluteX="0dp">
+
+        <!--1열-->
+        <LinearLayout
+            android:id="@+id/calendarLinear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvCalendarDow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:fontFamily="@font/nanumsquareb"
+                android:gravity="center"
+                android:text="금요일"
+                android:textColor="@color/calendar_arrow"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvCalendarDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:fontFamily="@font/nanumsquarer"
+                android:gravity="center"
+                android:text="30 May 2021"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="13dp"
+                android:layout_gravity="center"
+                android:layout_weight="6"
+                android:src="@drawable/group_255" />
+        </LinearLayout>
+
+        <!--2열-->
+        <LinearLayout
+            android:id="@+id/calendarLinear2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarLinear1">
+
+            <ImageView
+                android:id="@+id/ivCalendarMorningFace"
+                android:layout_width="0dp"
+                android:layout_height="16.5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:src="@drawable/happy"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvCalendarMorning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:gravity="center"
+                    android:text="아침"
+                    android:textSize="12dp"
+                    android:textColor="@color/calendar_arrow"/>
+
+                <TextView
+                    android:id="@+id/tvCalendarMorningTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:gravity="center"
+                    android:text="08:10 AM"
+                    android:textSize="12dp"
+                    android:textColor="@color/themecolor"
+                    android:letterSpacing="-0.05"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivCalendarMorningStatus"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="7"
+                android:src="@drawable/group_252"/>
+
+        </LinearLayout>
+        <!--3열-->
+        <LinearLayout
+            android:id="@+id/calendarLinear3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarLinear2">
+
+            <ImageView
+                android:id="@+id/ivCalendarAfternoonFace"
+                android:layout_width="0dp"
+                android:layout_height="16.5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:src="@drawable/sad"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvCalendarAfternoon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:gravity="center"
+                    android:text="점심"
+                    android:textSize="12dp"
+                    android:textColor="@color/calendar_arrow"/>
+
+                <TextView
+                    android:id="@+id/tvCalendarAfternoonTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:gravity="center"
+                    android:text="12:10 PM"
+                    android:textSize="12dp"
+                    android:textColor="@color/themecolor"
+                    android:letterSpacing="-0.05"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivCalendarAfternoonStatus"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="7"
+                android:src="@drawable/group_253"/>
+
+        </LinearLayout>
+        <!--4열-->
+        <LinearLayout
+            android:id="@+id/calendarLinear4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarLinear3">
+
+            <ImageView
+                android:id="@+id/ivCalendarEveningFace"
+                android:layout_width="0dp"
+                android:layout_height="16.5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:src="@drawable/basic_off_close"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvCalendarEvening"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:gravity="center"
+                    android:text="저녁"
+                    android:textSize="12dp"
+                    android:textColor="@color/calendar_arrow"/>
+
+                <TextView
+                    android:id="@+id/tvCalendarEveningTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:gravity="center"
+                    android:text="07:10 PM"
+                    android:textSize="12dp"
+                    android:textColor="@color/themecolor"
+                    android:letterSpacing="-0.05"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivCalendarEveningStatus"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="7"
+                android:src="@drawable/group_254"/>
+
+        </LinearLayout>
+        <!--5열-->
+        <LinearLayout
+            android:id="@+id/calendarLinear5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarLinear4">
+
+            <ImageView
+                android:id="@+id/ivCalendarNightFace"
+                android:layout_width="0dp"
+                android:layout_height="16.5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:src="@drawable/soso"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvCalendarNight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:gravity="center"
+                    android:text="자기전"
+                    android:textColor="@color/calendar_arrow"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tvCalendarNightTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:gravity="center"
+                    android:text="11:00 PM"
+                    android:textSize="12dp"
+                    android:textColor="@color/themecolor"
+                    android:letterSpacing="-0.05"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivCalendarNightStatus"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="7"
+                android:src="@drawable/group_257"/>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

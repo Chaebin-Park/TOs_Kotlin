@@ -7,12 +7,15 @@ import android.bluetooth.BluetoothSocket
 import android.content.Intent
 import android.os.*
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import deu.cse.tos.R
+import deu.cse.tos.data.LoginData
 import kotlinx.android.synthetic.main.activity_brush.*
+import kotlinx.android.synthetic.main.activity_login.*
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -21,6 +24,7 @@ import java.nio.charset.Charset
 import java.util.*
 
 
+@Suppress("DEPRECATION")
 class BrushActivity : AppCompatActivity() {
 
     private lateinit var mBluetoothAdapter: BluetoothAdapter
@@ -31,24 +35,35 @@ class BrushActivity : AppCompatActivity() {
     private lateinit var mBluetoothDevice: BluetoothDevice
     private lateinit var mBluetoothSocket: BluetoothSocket
 
-    @Suppress("DEPRECATION")
+    private lateinit var mIntent: Intent
+    private lateinit var loginData: LoginData
+    private lateinit var handler: Handler
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_brush)
 
+        loginData = intent.getSerializableExtra("LOGIN") as LoginData
+
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+
         btnBluetoothOn.setOnClickListener{
             bluetoothOn()
         }
+
         btnBluetoothOff.setOnClickListener{
             bluetoothOff()
         }
+
         btnConnect.setOnClickListener{
             listPairedDevice()
         }
-        btnSendData.setOnClickListener{
-            mThreadConnectedBluetooth.write(tvSendData.text.toString())
-            tvSendData.text.clear()
+
+        btn_end.setOnClickListener{
+            mIntent = Intent(this, SelfCheckActivity::class.java)
+            mIntent.putExtra("LOGIN", loginData)
+            finish()
+            startActivity(mIntent)
         }
 
         mBluetoothHandler = @SuppressLint("HandlerLeak")
@@ -65,12 +80,8 @@ class BrushActivity : AppCompatActivity() {
                         for ( i in readMessage.indices){
                             hexString += String.format("%02X", (readMessage[i].toInt() and 0xFF))
                         }
-//
-//                        val encoder= Base64.getEncoder()
-//                        val str = encoder.encode(msg.obj as ByteArray)
-//                        val encodeString = encoder.encodeToString(msg.obj as ByteArray)
 
-                        Log.e("DEU_MSG", hexString + "\n" + readMessage )
+                        Log.e("DEU_MSG", hexString + "\n" + readMessage)
                     } catch (e: UnsupportedEncodingException) {
                         e.printStackTrace()
                     }
@@ -84,7 +95,7 @@ class BrushActivity : AppCompatActivity() {
         if (mBluetoothAdapter.isEnabled) {
             Toast.makeText(applicationContext, "블루투스가 이미 활성화 되어 있습니다.", Toast.LENGTH_LONG)
                 .show()
-            tvBluetoothStatus.setText("활성화")
+            tvBluetoothStatus.setText("블루투스 활성화")
         } else {
             Toast.makeText(applicationContext, "블루투스가 활성화 되어 있지 않습니다.", Toast.LENGTH_LONG)
                 .show()
@@ -97,7 +108,7 @@ class BrushActivity : AppCompatActivity() {
         if (mBluetoothAdapter.isEnabled) {
             mBluetoothAdapter.disable()
             Toast.makeText(applicationContext, "블루투스가 비활성화 되었습니다.", Toast.LENGTH_SHORT).show()
-            tvBluetoothStatus.setText("비활성화")
+            tvBluetoothStatus.setText("블루투스 비활성화")
         } else {
             Toast.makeText(applicationContext, "블루투스가 이미 비활성화 되어 있습니다.", Toast.LENGTH_SHORT).show()
         }
@@ -107,10 +118,10 @@ class BrushActivity : AppCompatActivity() {
         when (requestCode) {
             BT_REQUEST_ENABLE -> if (resultCode == RESULT_OK) { // 블루투스 활성화를 확인을 클릭하였다면
                 Toast.makeText(applicationContext, "블루투스 활성화", Toast.LENGTH_LONG).show()
-                tvBluetoothStatus.setText("활성화")
+                tvBluetoothStatus.text = "활성화"
             } else if (resultCode == RESULT_CANCELED) { // 블루투스 활성화를 취소를 클릭하였다면
                 Toast.makeText(applicationContext, "취소", Toast.LENGTH_LONG).show()
-                tvBluetoothStatus.setText("비활성화")
+                tvBluetoothStatus.text = "비활성화"
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
@@ -119,6 +130,7 @@ class BrushActivity : AppCompatActivity() {
     private fun listPairedDevice(){
         if (mBluetoothAdapter.isEnabled){
             mPairedDevices = mBluetoothAdapter.bondedDevices
+            log("mPairedDevices : $mPairedDevices")
 
             if(mPairedDevices.isNotEmpty()){
                 val builder: AlertDialog.Builder = AlertDialog.Builder(this)
@@ -126,27 +138,30 @@ class BrushActivity : AppCompatActivity() {
 
                 mListPairedDevices = ArrayList()
                 for (device in mPairedDevices) {
-                    mListPairedDevices.add(device.name + "\n" + device.address)
+                    mListPairedDevices.add(device.name)
                     //mListPairedDevices.add(device.getName() + "\n" + device.getAddress());
                 }
+                log("mListPairedDevices : $mListPairedDevices")
                 val items = mListPairedDevices.toTypedArray<CharSequence>()
                 mListPairedDevices.toTypedArray<CharSequence>()
 
-                builder.setItems(
-                    items
-                ) { dialog, item -> connectSelectedDevice(items[item].toString()) }
+                builder.setItems(items) { _, item ->
+                    log("${items[item]}")
+                    connectSelectedDevice(items[item].toString())
+                }
 
                 val alert: AlertDialog = builder.create()
                 alert.show()
             } else {
-                Log.e("BLE", "페어링 장치 없음")
+                log("페어링 장치 없음")
             }
         } else {
-            Log.e("BLE", "블투투스 비활성화 되어있음")
+            log("블루투스 비활성화됨")
         }
     }
 
     private fun connectSelectedDevice(selectedDeviceName: String){
+        log("mPairedDevices : $mPairedDevices")
         for (tempDevice in mPairedDevices) {
             if (selectedDeviceName.equals(tempDevice.name)) {
                 mBluetoothDevice = tempDevice
@@ -156,12 +171,18 @@ class BrushActivity : AppCompatActivity() {
         try {
             mBluetoothSocket = mBluetoothDevice.createRfcommSocketToServiceRecord(BT_UUID)
             mBluetoothSocket.connect()
+            log("mBluetoothSocket : $mBluetoothSocket")
+            log("mBluetoothDevice : $mBluetoothDevice")
             mThreadConnectedBluetooth = ConnectedBluetoothThread(mBluetoothSocket)
             mThreadConnectedBluetooth.start()
             mBluetoothHandler.obtainMessage(BT_CONNECTING_STATUS, 1, -1).sendToTarget()
         } catch (e: IOException) {
             Toast.makeText(applicationContext, "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun log(m: String){
+        Log.e("BLE", m)
     }
 
     companion object {
@@ -173,7 +194,7 @@ class BrushActivity : AppCompatActivity() {
 
     inner class ConnectedBluetoothThread(socket: BluetoothSocket): Thread(){
         var mmSocket: BluetoothSocket = socket
-        lateinit var mmInStream: InputStream
+        var mmInStream: InputStream
         lateinit var mmOutStream: OutputStream
 
         init{

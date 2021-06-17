@@ -1,0 +1,139 @@
+
+l
+java:S2095ê"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(Ÿà¢8Ï”¾¡/
+‚
+java:S1192k"`Define a constant instead of duplicating this literal "Error starting camera preview: " 3 times.(¦²æÄşÿÿÿÿ8Ñ”¾¡/
+X
+java:S1141ü"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8×”¾¡/
+E
+java:S1604¥"(Make this anonymous inner class a lambda(¨œ„n8Ú”¾¡/
+F
+java:S1604«"(Make this anonymous inner class a lambda(¸ ø8Û”¾¡/
+K
+java:S1604±"(Make this anonymous inner class a lambda(Î›áİşÿÿÿÿ8İ”¾¡/
+o	java:S116"NRename this field "TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾£„„üÿÿÿÿ8ê”¾¡/
+C
+java:S1170"!Make this final field static too.(¾£„„üÿÿÿÿ8í”¾¡/
+P
+java:S1874 ".Remove this use of "Camera"; it is deprecated.( İ—¥şÿÿÿÿ8ÿ”¾¡/
+P
+java:S1874!".Remove this use of "Camera"; it is deprecated.(†ÎÛ‹ÿÿÿÿÿ8‚‚”¾¡/
+T
+java:S1874!"2Remove this use of "CameraInfo"; it is deprecated.(†ÎÛ‹ÿÿÿÿÿ8„‚”¾¡/
+P
+java:S1874/".Remove this use of "Camera"; it is deprecated.(íÚÕûÿÿÿÿ8‹‚”¾¡/
+N
+java:S1874/",Remove this use of "open"; it is deprecated.(íÚÕûÿÿÿÿ8‚”¾¡/
+Q
+java:S1874<"/Remove this use of "setType"; it is deprecated.(¡ìãÏúÿÿÿÿ8’‚”¾¡/
+c
+java:S1874<"ARemove this use of "SURFACE_TYPE_PUSH_BUFFERS"; it is deprecated.(¡ìãÏúÿÿÿÿ8”‚”¾¡/
+[
+java:S1874?"9Remove this use of "getDefaultDisplay"; it is deprecated.(º­ëúıÿÿÿÿ8™‚”¾¡/
+K
+java:S1874F".Remove this use of "Camera"; it is deprecated.(ìÊÙ™8§‚”¾¡/
+O
+java:S1874F"2Remove this use of "CameraInfo"; it is deprecated.(ìÊÙ™8©‚”¾¡/
+K
+java:S1874F".Remove this use of "Camera"; it is deprecated.(ìÊÙ™8«‚”¾¡/
+O
+java:S1874F"2Remove this use of "CameraInfo"; it is deprecated.(ìÊÙ™8¬‚”¾¡/
+K
+java:S1874G".Remove this use of "Camera"; it is deprecated.(î·”´8®‚”¾¡/
+R
+java:S1874G"5Remove this use of "getCameraInfo"; it is deprecated.(î·”´8°‚”¾¡/
+[
+java:S1874M"9Remove this use of "setPreviewDisplay"; it is deprecated.(½Ğ»Çúÿÿÿÿ8²‚”¾¡/
+V
+java:S1874N"4Remove this use of "startPreview"; it is deprecated.(ŒÊ—Íıÿÿÿÿ8´‚”¾¡/
+U
+java:S1874g"3Remove this use of "stopPreview"; it is deprecated.( ¬’‰ûÿÿÿÿ8»‚”¾¡/
+Z
+java:S1874s"=Remove this use of "setDisplayOrientation"; it is deprecated.(şÊ›“8¾‚”¾¡/
+V
+java:S1874v"9Remove this use of "setPreviewDisplay"; it is deprecated.(¿¤öã8À‚”¾¡/
+V
+java:S1874w"4Remove this use of "startPreview"; it is deprecated.(ŒÊ—Íıÿÿÿÿ8Â‚”¾¡/
+K
+java:S1874‚".Remove this use of "Camera"; it is deprecated.(åÔŸ8Ç‚”¾¡/
+O
+java:S1874‚"2Remove this use of "CameraInfo"; it is deprecated.(åÔŸ8É‚”¾¡/
+?	java:S131…""Add a default case to this switch.(¾¤Ÿå8Ê‚”¾¡/
+Q
+java:S1874–".Remove this use of "facing"; it is deprecated.(ƒôªÿÿÿÿÿ8Ì‚”¾¡/
+Q
+java:S1874–".Remove this use of "Camera"; it is deprecated.(ƒôªÿÿÿÿÿ8Í‚”¾¡/
+U
+java:S1874–"2Remove this use of "CameraInfo"; it is deprecated.(ƒôªÿÿÿÿÿ8Ï‚”¾¡/
+^
+java:S1874–";Remove this use of "CAMERA_FACING_FRONT"; it is deprecated.(ƒôªÿÿÿÿÿ8Ğ‚”¾¡/
+Q
+java:S1874—"3Remove this use of "orientation"; it is deprecated.(«ó•ô8Ñ‚”¾¡/
+Q
+java:S1874š"3Remove this use of "orientation"; it is deprecated.(ÿÄ ¾8Ó‚”¾¡/
+O
+java:S1874¢"3Remove this use of "takePicture"; it is deprecated.(ïù½Õüÿÿÿÿ
+K
+java:S1874¥".Remove this use of "Camera"; it is deprecated.(¨œ„n8×‚”¾¡/
+T
+java:S1874¥"7Remove this use of "ShutterCallback"; it is deprecated.(¨œ„n8Ø‚”¾¡/
+K
+java:S1874¥".Remove this use of "Camera"; it is deprecated.(¨œ„n8Ù‚”¾¡/
+¤
+java:S1186¦"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(é±¼§ùÿÿÿÿ8Ú‚”¾¡/
+L
+java:S1874«".Remove this use of "Camera"; it is deprecated.(¸ ø8Ü‚”¾¡/
+U
+java:S1874«"7Remove this use of "PictureCallback"; it is deprecated.(¸ ø8İ‚”¾¡/
+L
+java:S1874«".Remove this use of "Camera"; it is deprecated.(¸ ø8Ş‚”¾¡/
+¤
+java:S1186¬"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ğ•÷Şıÿÿÿÿ8ß‚”¾¡/
+Q
+java:S1874¬".Remove this use of "Camera"; it is deprecated.(ğ•÷Şıÿÿÿÿ8á‚”¾¡/
+Q
+java:S1874±".Remove this use of "Camera"; it is deprecated.(Î›áİşÿÿÿÿ8ã‚”¾¡/
+Z
+java:S1874±"7Remove this use of "PictureCallback"; it is deprecated.(Î›áİşÿÿÿÿ8å‚”¾¡/
+Q
+java:S1874±".Remove this use of "Camera"; it is deprecated.(Î›áİşÿÿÿÿ8æ‚”¾¡/
+Q
+java:S1874²".Remove this use of "Camera"; it is deprecated.(ğ•÷Şıÿÿÿÿ8ê‚”¾¡/
+X
+java:S1874µ"5Remove this use of "getParameters"; it is deprecated.(€°·¤ûÿÿÿÿ8í‚”¾¡/
+Y
+java:S1874µ"6Remove this use of "getPictureSize"; it is deprecated.(€°·¤ûÿÿÿÿ8î‚”¾¡/
+P
+java:S1874µ"-Remove this use of "width"; it is deprecated.(€°·¤ûÿÿÿÿ8ğ‚”¾¡/
+R
+java:S1874¶"5Remove this use of "getParameters"; it is deprecated.(±‚¡48ò‚”¾¡/
+S
+java:S1874¶"6Remove this use of "getPictureSize"; it is deprecated.(±‚¡48ô‚”¾¡/
+K
+java:S1874¶".Remove this use of "height"; it is deprecated.(±‚¡48õ‚”¾¡/
+Y	java:S125¹"<This block of commented-out lines of code should be removed.(åÚ†é8÷‚”¾¡/
+Q
+java:S1874Æ".Remove this use of "facing"; it is deprecated.(¦­İÿÿÿÿÿ8û‚”¾¡/
+Q
+java:S1874Æ".Remove this use of "Camera"; it is deprecated.(¦­İÿÿÿÿÿ8ü‚”¾¡/
+U
+java:S1874Æ"2Remove this use of "CameraInfo"; it is deprecated.(¦­İÿÿÿÿÿ8ı‚”¾¡/
+^
+java:S1874Æ";Remove this use of "CAMERA_FACING_FRONT"; it is deprecated.(¦­İÿÿÿÿÿ8ÿ‚”¾¡/
+^	java:S125Ç"<This block of commented-out lines of code should be removed.(ëäµúÿÿÿÿ8ƒ”¾¡/
+L
+java:S1874Õ"/Remove this use of "execute"; it is deprecated.(ƒïv8Šƒ”¾¡/
+T
+java:S1874Ú"1Remove this use of "AsyncTask"; it is deprecated.(‡Ëªøùÿÿÿÿ8ƒ”¾¡/
+c
+java:S2147‡"ECombine this catch with the one at line 261, which has the same body.(ï­£Ä8”ƒ”¾¡/
+f
+java:S1874â"CRemove this use of "getExternalStorageDirectory"; it is deprecated.(ïüÊÒûÿÿÿÿ8«ƒ”¾¡/
+W
+java:S1874ó"4Remove this use of "startPreview"; it is deprecated.(ŒÊ—Íıÿÿÿÿ8µƒ”¾¡/
+i
+java:S1874÷"FRemove this use of "ACTION_MEDIA_SCANNER_SCAN_FILE"; it is deprecated.(ëÒ¿šıÿÿÿÿ8Åƒ”¾¡/
+W
+java:S1874ı"9Remove this use of "setPreviewDisplay"; it is deprecated.(¿¤öã8Çƒ”¾¡/
+W
+java:S1874ş"4Remove this use of "startPreview"; it is deprecated.(ŒÊ—Íıÿÿÿÿ8Éƒ”¾¡/

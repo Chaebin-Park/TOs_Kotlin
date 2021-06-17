@@ -30,7 +30,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.55"
-        android:layout_marginBottom="?attr/actionBarSize"
         android:background="@drawable/group_256"
         tools:layout_editor_absoluteX="0dp">
 
@@ -85,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:weightSum="10"
             android:orientation="horizontal"
@@ -216,7 +215,7 @@
             app:layout_constraintTop_toBottomOf="@+id/calendarLinear3">
 
             <ImageView
-                android:id="@+id/ivCalendarEveningFace"
+                android:id="@+id/ivCalendarDinnerFace"
                 android:layout_width="0dp"
                 android:layout_height="16.5dp"
                 android:layout_weight="1"
@@ -232,7 +231,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvCalendarEvening"
+                    android:id="@+id/tvCalendarDinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumsquarer"
@@ -242,7 +241,7 @@
                     android:textColor="@color/calendar_arrow"/>
 
                 <TextView
-                    android:id="@+id/tvCalendarEveningTime"
+                    android:id="@+id/tvCalendarDinnerTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumsquarer"
@@ -255,7 +254,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/ivCalendarEveningStatus"
+                android:id="@+id/ivCalendarDinnerStatus"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="7"
@@ -270,6 +269,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
+            android:layout_marginBottom="50dp"
             android:weightSum="10"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"

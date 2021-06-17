@@ -1,28 +1,18 @@
-package deu.cse.tos.Data
+package deu.cse.tos.data
 
 import com.google.gson.annotations.SerializedName
 
+//class QnaDTO: ArrayList<QnaDTOList>()
 class QnaDTO {
     @SerializedName("result")
-    private var data: List<Question>? = null
+    var data: List<Question>? = null
 
-    class Question {
-        @SerializedName("question_name")
-        var questionName: String? = null
+    data class Question (
+        @SerializedName("question_name")    val question: String,
+        @SerializedName("answer")   val answer: String,
+        @SerializedName("tag")  var tag: String
+        )
 
-        @SerializedName("answer")
-        var answer: String? = null
-
-        @SerializedName("tag")
-        var tag: String? = null
-        override fun toString(): String {
-            return "Question{" +
-                    "question_name='" + questionName + '\'' +
-                    ", answer='" + answer + '\'' +
-                    ", tag='" + tag + '\'' +
-                    '}'
-        }
-    }
 
     override fun toString(): String {
         return "QnaDTO{" +

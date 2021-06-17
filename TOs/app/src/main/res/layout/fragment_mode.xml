@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.fragment.ModeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            style="@style/largeText"
+            android:layout_marginTop="10dp"
+            android:text="모드 선택" />
+
+        <TextView
+            style="@style/basicText"
+            android:layout_marginTop="5dp"
+            android:text="칫솔질 모드를 골라주세요"
+            android:textColor="@color/themecolor" />
+    </LinearLayout>
+
+    <Button
+        style="?attr/materialButtonOutlinedStyle"
+        android:id="@+id/btn_bluetooth"
+        android:text="기기 연결"
+        android:textColor="@color/themecolor"
+        android:textSize="30dp"
+        android:fontFamily="@font/nanumsquareeb"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+    <Button
+        style="?attr/materialButtonOutlinedStyle"
+        android:id="@+id/btn_camera"
+        android:text="칫솔모 검사"
+        android:textColor="@color/themecolor"
+        android:textSize="30dp"
+        android:fontFamily="@font/nanumsquareeb"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bluetooth" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

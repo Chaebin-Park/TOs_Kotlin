@@ -13,4 +13,12 @@
     <color name="ssammoocolor">#EDF8E8</color>
     <color name="ssamocolor">#98BFBD</color>
     <color name="score">#00CC99</color>
+    <color name="black">#FF000000</color>
+    <color name="popup_white">#00000000</color>
+    <color name="deu">#0056A6</color>
+    <color name="kakao">#FEE500</color>
+    <color name="kakao_brown">#3A1D1D</color>
+    <color name="google">#FFFFFF</color>
+    <color name="google_blue">#4285F4</color>
+    <color name="popup_blue">#0078D4</color>
 </resources>

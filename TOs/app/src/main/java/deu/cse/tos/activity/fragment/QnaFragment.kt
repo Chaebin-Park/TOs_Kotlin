@@ -1,60 +1,91 @@
 package deu.cse.tos.activity.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import deu.cse.tos.R
+import deu.cse.tos.adapter.QnaHashRecyclerAdapter
+import deu.cse.tos.adapter.QnaRecyclerAdapter
+import deu.cse.tos.data.QnaDTO
+import deu.cse.tos.data.QnaData
+import deu.cse.tos.retrofit.RetrofitBuilder
+import kotlinx.android.synthetic.main.fragment_qna.*
+import kotlinx.android.synthetic.main.fragment_qna.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [QnaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class QnaFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var qnaData: ArrayList<QnaData>
+    private lateinit var hashData: ArrayList<String>
+    private lateinit var hashTag: ArrayList<String>
+    private lateinit var qnaAdapter: QnaRecyclerAdapter
+    private lateinit var hashAdapter: QnaHashRecyclerAdapter
+    private var input: HashMap<String, Any> = HashMap()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_qna, container, false)
-    }
+        val rootView = inflater.inflate(R.layout.fragment_qna, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment QnaFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            QnaFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        rootView.qna_refresh.setOnRefreshListener {
+            qna_refresh.isRefreshing = false
+        }
+
+        RetrofitBuilder.api.postQnaResult(input).enqueue(object : Callback<QnaDTO> {
+            override fun onResponse(call: Call<QnaDTO>, response: Response<QnaDTO>) {
+                if (response.isSuccessful) {
+                    val data = response.body()!!
+                    val hashTmp = HashSet<String>()
+                    val qnaTmp: HashSet<QnaData> = HashSet<QnaData>()
+
+                    data.data?.forEach{
+                        qnaTmp.add(QnaData(it.question, it.answer, it.tag))
+                        hashTmp.add(it.tag)
+                        log(hashTmp.toString())
+                    }
+
+                    qnaData = ArrayList(qnaTmp)
+                    hashData = ArrayList(hashTmp)
+
+                    qnaAdapter = QnaRecyclerAdapter(rootView.context, qnaData)
+                    qna_board.adapter = qnaAdapter
+                    val qnaLayout = LinearLayoutManager(rootView.context)
+                    qna_board.layoutManager = qnaLayout
+                    qna_board.setHasFixedSize(true)
+
+                    hashAdapter = QnaHashRecyclerAdapter(rootView.context, hashData)
+                    qna_hash_tag.adapter = hashAdapter
+                    val hashLayout = LinearLayoutManager(rootView.context)
+                    qna_hash_tag.layoutManager = hashLayout
+                    qna_hash_tag.setHasFixedSize(true)
                 }
             }
+
+            override fun onFailure(call: Call<QnaDTO>, t: Throwable) {
+                log("통신 실패 : $t")
+            }
+
+        })
+
+        return rootView
+    }
+
+
+
+    private fun log(msg: String){
+        Log.e("QnaFragment", msg)
     }
 }

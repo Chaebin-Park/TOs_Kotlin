@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">TOs</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="kakao_native_app_key">78e1f664a2a5654d24038a04f06eceb8</string>
+    <string name="kakao_rest_api_key">b0e3c893ed4f15045a1d3275724b9ac3</string>
+    <string name="kakao_admin_key">6368b72c47447b5575400e35de605e0f</string>
+
 </resources>

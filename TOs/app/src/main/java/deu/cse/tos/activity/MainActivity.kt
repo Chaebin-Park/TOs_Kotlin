@@ -2,7 +2,7 @@ package deu.cse.tos.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -10,49 +10,69 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import deu.cse.tos.R
 import deu.cse.tos.activity.fragment.*
+import deu.cse.tos.data.LoginData
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.log
 
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
+    private val fragmentMain: MainFragment = MainFragment()
+    private val fragmentInfo: InformationFragment = InformationFragment()
+    private val fragmentMode: ModeFragment = ModeFragment()
+    private val fragmentQna: QnaFragment = QnaFragment()
+    private val fragmentCalendar: CalendarFragment = CalendarFragment()
     private val fragmentManager = supportFragmentManager
-
     private lateinit var fragmentTransaction: FragmentTransaction
     private lateinit var bottomNavigationView: BottomNavigationView
-    private var qnaFragment= QnaFragment()
-    private var mainFragment = MainFragment()
-    private var informationFragment = InformationFragment()
-    private var calendarFragment = CalendarFragment()
-    private var modeFragment = ModeFragment()
+    private lateinit var loginData: LoginData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        fragmentTransaction = fragmentManager.beginTransaction()
+
+        val intent = intent
+        loginData = intent.getSerializableExtra("LOGIN") as LoginData
+        val bundle = Bundle()
+        bundle.putSerializable("LOGIN", loginData)
 
         fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.main_layout, mainFragment).commitAllowingStateLoss()
-        val intent = Intent(this, ModeActivity::class.java)
+        fragmentTransaction.replace(R.id.main_layout, fragmentMain).commitAllowingStateLoss()
+        fragmentMain.arguments = bundle
 
-        navigation.setOnNavigationItemReselectedListener { item ->
+        navigation.setOnNavigationItemSelectedListener { item: MenuItem ->
             fragmentTransaction = fragmentManager.beginTransaction()
-            when(item.itemId){
+            when (item.itemId) {
                 R.id.callHome -> {
-                    fragmentTransaction.replace(R.id.main_layout, mainFragment).commitAllowingStateLoss()
+//                    replaceFragment(fragmentMain)
+                    fragmentTransaction.replace(R.id.main_layout, fragmentMain).commitAllowingStateLoss()
+                    fragmentMain.arguments = bundle
                 }
                 R.id.callQnA -> {
-                    fragmentTransaction.replace(R.id.main_layout, qnaFragment).commitAllowingStateLoss()
+//                    replaceFragment(fragmentQna)
+                    fragmentTransaction.replace(R.id.main_layout, fragmentQna).commitAllowingStateLoss()
+                    fragmentQna.arguments = bundle
+                }
+                R.id.callCalendar -> {
+//                    replaceFragment(fragmentCalendar)
+                    fragmentTransaction.replace(R.id.main_layout, fragmentCalendar).commitAllowingStateLoss()
+                    fragmentCalendar.arguments = bundle
+
                 }
                 R.id.callInformation -> {
-                    fragmentTransaction.replace(R.id.main_layout, calendarFragment).commitAllowingStateLoss()
+//                    replaceFragment(fragmentInfo)
+                    fragmentTransaction.replace(R.id.main_layout, fragmentInfo).commitAllowingStateLoss()
+                    fragmentInfo.arguments = bundle
                 }
                 R.id.callBrush -> {
-                    fragmentTransaction.replace(R.id.main_layout, modeFragment).commitAllowingStateLoss()
-                }
-                else -> {
-                    Log.e("NAV_ERR", "YOU CANT TOUCH THIS")
+//                    replaceFragment(fragmentMode)
+                    fragmentTransaction.replace(R.id.main_layout, fragmentMode).commitAllowingStateLoss()
+                    fragmentMode.arguments = bundle
                 }
             }
+            false
         }
     }
 
@@ -74,15 +94,18 @@ class MainActivity : AppCompatActivity() {
         mPopupClick()
     }
 
-    private fun mPopupClick(){
-        val intent = Intent(this, ExitPopupActivity::class.java)
-        startActivityForResult(intent, BACK_PRESSED)
-    }
-
-    private fun replaceFragment(fragment: Fragment){
+    fun replaceFragment(fragment: Fragment){
+        val bundle = Bundle()
+        bundle.putSerializable("LOGIN", loginData)
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.main_layout, fragment).commit()
+        fragment.arguments = bundle
+    }
+
+    private fun mPopupClick(){
+        val intent = Intent(this, ExitPopupActivity::class.java)
+        startActivityForResult(intent, BACK_PRESSED)
     }
 
     companion object {

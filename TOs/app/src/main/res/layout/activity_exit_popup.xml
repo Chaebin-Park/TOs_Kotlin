@@ -10,8 +10,9 @@
     <LinearLayout
         android:padding="24dp"
         android:orientation="vertical"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="100dp">
         <TextView
             android:id="@+id/txtText"
             android:text="앱을 종료하시겠습니까?"
@@ -40,12 +41,14 @@
         <!-- NO -->
         <Button
             style="@style/exitPopupButton"
+            android:layout_height="wrap_content"
             android:id="@+id/btn_stay"
             android:text="NO" />
 
         <!-- YES -->
         <Button
             style="@style/exitPopupButton"
+            android:layout_height="wrap_content"
             android:id="@+id/btn_exit"
             android:text="YES"/>
     </LinearLayout>
